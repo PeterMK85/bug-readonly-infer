@@ -14,11 +14,11 @@ const appRouter = router({
       //    ^?
       return users;
     }),
-    byId: publicProcedure.input(z.string()).query(async (opts) => {
+    byId: publicProcedure.input(z.array(z.string()).readonly()).query(async (opts) => {
       const { input } = opts;
       //      ^?
       // Retrieve the user with the given ID
-      const user = await db.user.findById(input);
+      const user = await db.user.findByIds(input);
       return user;
     }),
     create: publicProcedure

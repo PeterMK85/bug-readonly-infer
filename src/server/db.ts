@@ -5,7 +5,7 @@ const users: User[] = [];
 export const db = {
   user: {
     findMany: async () => users,
-    findById: async (id: string) => users.find((user) => user.id === id),
+    findByIds: async (ids: ReadonlyArray<string>) => users.find((user) => ids.includes(user.id)),
     create: async (data: { name: string }) => {
       const user = { id: String(users.length + 1), ...data };
       users.push(user);

@@ -31,6 +31,6 @@ const createdUser = await trpc.user.create.mutate({ name: 'sachinraja' });
 //    ^?
 console.log('Created user:', createdUser);
 
-const user = await trpc.user.byId.query('1');
+const user = await trpc.user.byIds.query(['1']);
 //    ^?
 console.log('User 1:', user);
